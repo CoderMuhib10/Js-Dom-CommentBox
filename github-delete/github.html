@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Delete</title>
+    <style>
+        #btn {
+            cursor: pointer;
+            width: 90px;
+            height: 30px;
+            border-radius: 3.5px;
+
+        }
+    </style>
+    <link rel="shortcut icon" href="gitCat.png" type="image/x-icon">
+</head>
+
+<body>
+    <h1 id="secret">
+        My Secret Info
+    </h1>
+    <input type="text" id="input-field" placeholder="delete">
+    <button id="btn" disabled>Delete</button>
+    <script>
+
+
+        // ------------------------------------------->
+        // delete by enter key if input value = delete
+
+        document.querySelector("#input-field").addEventListener("keypress", function (e) {
+            const text = e.target.value;
+            if (text === "delete") {
+                if (e.key === "Enter") {
+                    const content = document.querySelector("#secret")
+                    content.style.display = "none"
+                }
+
+            }
+        })
+
+        // ------------------------------------------->
+        // check if input value delete or not and then disable or enable button
+        document.getElementById("input-field").addEventListener("keyup", function (e) {
+            const text = e.target.value;
+            if (text === "delete") {
+                document.querySelector("#btn").removeAttribute("disabled")
+            }
+            else {
+                document.querySelector("#btn").setAttribute("disabled", true)
+            }
+        })
+        
+        // delete by button 
+
+        document.querySelector("#btn").addEventListener("click", function () {
+            const content = document.querySelector("#secret")
+            content.style.display = "none"
+        })
+
+    </script>
+</body>
+
+</html>
